@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-heading), Georgia, "Times New Roman", serif;
+
+  /* Spice-driven identity — saffron gold, tandoor fire, charred earth */
+  --color-saffron: #f4a81d;
+  --color-saffron-soft: #f7c258;
+  --color-paprika: #d6451b;
+  --color-cardamom: #8fa66b;
+  --color-cream: #f6e8cc;
+  --color-charcoal: #160f0a;
+  --color-cocoa: #20160f;
+  --color-cocoa-light: #2c1f15;
+}
+
+/*
+  Signature: a Mughal "jali" lattice drawn as an inline SVG (no network cost),
+  used in place of heavy decorative photography. Tints itself saffron at very
+  low opacity so it reads as carved screenwork behind content.
+*/
+.bg-jali {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23f4a81d' stroke-width='1.1' stroke-opacity='0.16'%3E%3Cpath d='M42 1C53 22 62 31 83 42 62 53 53 62 42 83 31 62 22 53 1 42 22 31 31 22 42 1Z'/%3E%3Ccircle cx='42' cy='42' r='6.5'/%3E%3Cpath d='M42 18a24 24 0 1 0 0 48 24 24 0 1 0 0-48Z' stroke-opacity='0.08'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 84px 84px;
+}
+
+/* Ambient ember — warm radial glow used as cheap atmospheric lighting */
+.ember {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(244, 168, 29, 0.10), transparent 70%),
+    radial-gradient(40% 40% at 85% 30%, rgba(214, 69, 27, 0.10), transparent 70%);
+}
+
+@keyframes ember-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(0, -18px, 0) scale(1.08); opacity: 0.85; }
+}
+.animate-ember-drift { animation: ember-drift 9s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Honour user motion preferences across the whole page */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html { scroll-behavior: smooth; }

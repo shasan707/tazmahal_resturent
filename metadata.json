@@ -1,0 +1,8 @@
+{
+  "name": "Nova Spice",
+  "description": "Vibrant Indian, Bangladeshi, and Mediterranean dining establishment website with an integrated AI voice and text agent.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": []
+}

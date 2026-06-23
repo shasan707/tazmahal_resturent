@@ -1,0 +1,13 @@
+node_modules/
+.next/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Local agent / AI tooling — not part of the app
+.claude/
+.agents/
+.aistudio/
+skills-lock.json
