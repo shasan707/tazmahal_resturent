@@ -65,9 +65,9 @@ export default function ChatWidget() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="bg-zinc-950/60 backdrop-blur-2xl w-80 sm:w-[400px] rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] border border-white/10 overflow-hidden mb-4"
+            className="bg-zinc-950/60 backdrop-blur-2xl w-80 sm:w-[400px] rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] border border-white/10 overflow-hidden mb-4 flex flex-col h-[540px] max-h-[calc(100dvh-6rem)]"
           >
-            <div className="bg-gradient-to-r from-amber-500/80 to-orange-600/80 backdrop-blur-xl text-white px-5 py-4 flex items-center justify-between border-b border-white/20">
+            <div className="shrink-0 bg-gradient-to-r from-amber-500/80 to-orange-600/80 backdrop-blur-xl text-white px-5 py-4 flex items-center justify-between border-b border-white/20">
               <div>
                 <h3 className="font-semibold text-white drop-shadow-md">Taj Mahal Chat</h3>
                 <p className="text-xs text-amber-50/90 leading-tight">Zawsze gotowi do pomocy</p>
@@ -77,7 +77,7 @@ export default function ChatWidget() {
               </button>
             </div>
             
-            <div className="h-[400px] overflow-y-auto p-4 flex flex-col gap-4 bg-zinc-900/40">
+            <div className="flex-1 min-h-0 overflow-y-auto p-4 flex flex-col gap-4 bg-zinc-900/40">
               {messages.map((msg, i) => (
                 <div key={i} className={'max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-lg ' + (msg.role === 'user' ? 'bg-amber-500/90 backdrop-blur-md text-white self-end rounded-tr-sm border border-amber-400/30' : 'bg-white/10 backdrop-blur-xl border border-white/10 text-slate-100 self-start rounded-tl-sm')}>
                    {msg.role === 'user' ? (
@@ -99,7 +99,7 @@ export default function ChatWidget() {
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="p-3 bg-zinc-950/60 backdrop-blur-xl border-t border-white/10 flex items-center gap-2">
+            <div className="shrink-0 p-3 bg-zinc-950/60 backdrop-blur-xl border-t border-white/10 flex items-center gap-2">
               <input
                 title="Wpisz wiadomość"
                 type="text"
@@ -120,7 +120,7 @@ export default function ChatWidget() {
             </div>
 
             {/* White-label branding */}
-            <div className="px-4 py-2 bg-zinc-950/60 backdrop-blur-xl text-center border-t border-white/5">
+            <div className="shrink-0 px-4 py-2 bg-zinc-950/60 backdrop-blur-xl text-center border-t border-white/5">
               <span className="text-[11px] text-white/40">
                 Powered by{' '}
                 <a
