@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     ];
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-5.4-mini",
       messages,
       temperature: 0.7,
     });

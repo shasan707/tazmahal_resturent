@@ -3,6 +3,7 @@ node_modules/
 coverage/
 .DS_Store
 *.log
+*.tsbuildinfo
 .env*
 !.env.example
 
@@ -11,3 +12,5 @@ coverage/
 .agents/
 .aistudio/
 skills-lock.json
+
+.vercel

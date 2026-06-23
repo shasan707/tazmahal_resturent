@@ -118,6 +118,21 @@ export default function ChatWidget() {
                 <Send className="w-4 h-4 ml-0.5" />
               </button>
             </div>
+
+            {/* White-label branding */}
+            <div className="px-4 py-2 bg-zinc-950/60 backdrop-blur-xl text-center border-t border-white/5">
+              <span className="text-[11px] text-white/40">
+                Powered by{' '}
+                <a
+                  href="https://jotillabs.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-400 hover:text-amber-300 font-medium transition-colors"
+                >
+                  jotilabs
+                </a>
+              </span>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
