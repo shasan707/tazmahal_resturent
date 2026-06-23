@@ -83,7 +83,7 @@ export default function Home() {
       footerAbout: 'Prawdziwy Kebab, Biryani i wybitna kuchnia indyjska w samym sercu Polski. Poczuj tradycję smaku, otwarci do późna z dostawą do domu. Całe mięso ze sprawdzonym certyfikatem halal.',
       location: 'Lokalizacja',
       hours: 'Godziny otwarcia',
-      rights: 'Wszelkie prawa zastrzeżone: jotilabs',
+      rights: 'Wszelkie prawa zastrzeżone:',
       vegTag: 'roślinne',
     },
     en: {
@@ -119,7 +119,7 @@ export default function Home() {
       footerAbout: 'Authentic Kebab, Biryani, and outstanding Indian cuisine in the heart of Poland. Taste the tradition, open late with home delivery. All meat is certified Halal.',
       location: 'Location',
       hours: 'Opening Hours',
-      rights: 'All rights reserved: jotilabs',
+      rights: 'All rights reserved:',
       vegTag: 'plant-based',
     }
   };
@@ -525,7 +525,7 @@ export default function Home() {
                rel="noopener noreferrer"
                className="text-saffron font-medium hover:text-saffron-soft underline underline-offset-4 transition-colors"
              >
-               Jotillabs.com
+               jotilabs
              </a>
            </p>
            <div className="flex items-center gap-3">
