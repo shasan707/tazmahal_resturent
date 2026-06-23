@@ -49,13 +49,16 @@ export default function VoiceWidget() {
 
     try {
       const res = await fetch('/api/retell/web-call', { method: 'POST' });
-      if (!res.ok) throw new Error('Failed to create web call');
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Failed to create web call');
+      }
       const { accessToken } = await res.json();
 
       await clientRef.current?.startCall({ accessToken });
     } catch (err: any) {
       console.error(err);
-      setError('Microphone access denied or error connecting.');
+      setError(err?.message || 'Microphone access denied or error connecting.');
       setIsConnecting(false);
       setIsActive(false);
     }
@@ -76,7 +79,12 @@ export default function VoiceWidget() {
   };
 
   return (
-    <div className="fixed bottom-8 left-8 z-50 flex items-center gap-4">
+    <div className="fixed bottom-8 left-8 z-50 flex items-end gap-4">
+       {error && (
+         <div className="absolute -top-14 left-0 max-w-xs bg-red-500/90 text-white text-xs px-3 py-2 rounded-xl shadow-lg backdrop-blur-md border border-red-400/30">
+           {error}
+         </div>
+       )}
        {/* Voice Status indicator */}
        <div className="bg-white/10 text-white backdrop-blur-xl px-4 py-2 rounded-full shadow-2xl border border-white/20 flex items-center gap-3">
           <div className="flex flex-col">

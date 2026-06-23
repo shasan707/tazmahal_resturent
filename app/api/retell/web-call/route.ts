@@ -6,12 +6,18 @@ export async function POST() {
     const agentId = process.env.RETELL_AGENT_ID;
     if (!agentId) {
       return NextResponse.json(
-        { error: "RETELL_AGENT_ID is not configured. Run `npm run setup:retell`." },
+        { error: "RETELL_AGENT_ID is not set in the deployment environment." },
+        { status: 500 }
+      );
+    }
+    if (!process.env.RETELL_API_KEY) {
+      return NextResponse.json(
+        { error: "RETELL_API_KEY is not set in the deployment environment." },
         { status: 500 }
       );
     }
 
-    const retell = new Retell({ apiKey: process.env.RETELL_API_KEY ?? "" });
+    const retell = new Retell({ apiKey: process.env.RETELL_API_KEY });
     const call = await retell.call.createWebCall({ agent_id: agentId });
 
     return NextResponse.json({

@@ -43,11 +43,12 @@ export default function ChatWidget() {
         })
       });
 
-      const data = await response.json();
-      if (data.text) {
+      const data = await response.json().catch(() => ({}));
+      if (response.ok && data.text) {
         setMessages(prev => [...prev, { role: 'model', text: data.text }]);
       } else {
-        setMessages(prev => [...prev, { role: 'model', text: 'Przepraszam, wystąpił błąd.' }]);
+        const detail = data.error ? ` (${data.error})` : '';
+        setMessages(prev => [...prev, { role: 'model', text: `Przepraszam, wystąpił błąd.${detail}` }]);
       }
     } catch (error) {
       setMessages(prev => [...prev, { role: 'model', text: 'Przepraszam, wystąpił błąd sieci.' }]);
