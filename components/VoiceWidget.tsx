@@ -79,13 +79,39 @@ export default function VoiceWidget() {
   };
 
   return (
-    <div className="fixed bottom-8 left-8 z-50 flex items-end gap-4">
+    <div className="fixed bottom-8 left-8 z-50 flex flex-col items-start gap-3">
        {error && (
-         <div className="absolute -top-14 left-0 max-w-xs bg-red-500/90 text-white text-xs px-3 py-2 rounded-xl shadow-lg backdrop-blur-md border border-red-400/30">
+         <div className="max-w-xs bg-red-500/90 text-white text-xs px-3 py-2 rounded-xl shadow-lg backdrop-blur-md border border-red-400/30">
            {error}
          </div>
        )}
-       {/* Voice Status indicator */}
+
+       {/* Mic button — sits directly ABOVE the phone number, with a gentle float */}
+       <div className={isActive ? '' : 'animate-float'}>
+         <button
+           onClick={toggleVoice}
+           aria-label={isActive ? 'Zakończ rozmowę' : 'Porozmawiaj z asystentką'}
+           className={'relative flex items-center justify-center w-14 h-14 rounded-full shadow-xl transition-colors ' + (isActive ? 'bg-red-500 hover:bg-red-600' : 'bg-amber-500 hover:bg-amber-600')}
+         >
+            {isActive && (
+              <motion.div
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+                className="absolute inset-0 rounded-full border border-red-400"
+              />
+            )}
+
+            {isConnecting ? (
+               <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            ) : isActive ? (
+               <MicOff className="w-6 h-6 text-white" />
+            ) : (
+               <Mic className="w-6 h-6 text-white" />
+            )}
+         </button>
+       </div>
+
+       {/* Voice status indicator (label + phone number) */}
        <div className="bg-white/10 text-white backdrop-blur-xl px-4 py-2 rounded-full shadow-2xl border border-white/20 flex items-center gap-3">
           <div className="flex flex-col">
              <span className="text-sm font-semibold tracking-wide">Porozmawiaj z Asystentką</span>
@@ -100,28 +126,6 @@ export default function VoiceWidget() {
              )}
           </div>
        </div>
-
-       {/* Widget button */}
-       <button
-         onClick={toggleVoice}
-         className={'relative flex items-center justify-center w-14 h-14 rounded-full shadow-xl transition-colors ' + (isActive ? 'bg-red-500 hover:bg-red-600' : 'bg-amber-500 hover:bg-amber-600')}
-       >
-          {isActive && (
-            <motion.div
-              animate={{ scale: [1, 1.4, 1] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="absolute inset-0 rounded-full border border-red-400"
-            />
-          )}
-
-          {isConnecting ? (
-             <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-          ) : isActive ? (
-             <MicOff className="w-6 h-6 text-white" />
-          ) : (
-             <Mic className="w-6 h-6 text-white" />
-          )}
-       </button>
     </div>
   );
 }

@@ -44,6 +44,14 @@
   100% { background-position: 200% 0; }
 }
 
+/* Gentle vertical float for the floating action buttons (mic + chat) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+.animate-float { animation: float 3.2s ease-in-out infinite; }
+.animate-float-slow { animation: float 4s ease-in-out infinite; }
+
 /* Honour user motion preferences across the whole page */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

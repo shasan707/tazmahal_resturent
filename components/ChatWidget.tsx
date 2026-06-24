@@ -138,13 +138,17 @@ export default function ChatWidget() {
       </AnimatePresence>
 
       {!isOpen && (
-        <button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          className="w-14 h-14 bg-amber-600 hover:bg-amber-700 rounded-full shadow-xl flex items-center justify-center text-white transition-transform hover:scale-105"
-        >
-          <MessageSquare className="w-6 h-6" />
-        </button>
+        // Wrapper carries the float so the button's hover:scale stays independent
+        <div className="animate-float-slow">
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            aria-label="Otwórz czat"
+            className="w-14 h-14 bg-amber-600 hover:bg-amber-700 rounded-full shadow-xl flex items-center justify-center text-white transition-transform hover:scale-105"
+          >
+            <MessageSquare className="w-6 h-6" />
+          </button>
+        </div>
       )}
     </div>
   );

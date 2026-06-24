@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Clock, MapPin, Phone, ChefHat, UtensilsCrossed, CalendarDays, Globe, Leaf, Flame, ArrowDown } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
@@ -31,21 +31,28 @@ const SOCIALS = [
   { label: 'Instagram', href: 'https://jotillabs.com', Icon: InstagramIcon },
 ];
 
-/* Subtle food imagery tiled behind the menu — replace these URLs anytime. */
+/* Dark, premium food imagery tiled behind the menu — replace these URLs anytime. */
 const MENU_BG_IMAGES = [
-  'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=500&q=50',
-  'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=500&q=50',
-  'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=50',
-  'https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?auto=format&fit=crop&w=500&q=50',
-  'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=500&q=50',
-  'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=50',
-  'https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=500&q=50',
-  'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=500&q=50',
+  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=50',
+  'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=500&q=50',
+  'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=500&q=50',
+  'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=500&q=50',
+  'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=50',
+  'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=500&q=50',
+  'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=500&q=50',
+  'https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=500&q=50',
 ];
 
 export default function Home() {
   const [lang, setLang] = useState<Language>('pl');
   const reduce = useReducedMotion();
+
+  // Default is Polish (SSR). On the client, adapt to the visitor's browser
+  // locale: Polish stays Polish, any other language switches the UI to English.
+  useEffect(() => {
+    const pref = (navigator.languages?.[0] || navigator.language || 'pl').toLowerCase();
+    if (!pref.startsWith('pl')) setLang('en');
+  }, []);
 
   const toggleLanguage = () => setLang(l => l === 'pl' ? 'en' : 'pl');
 
@@ -314,8 +321,8 @@ export default function Home() {
 
       {/* Full Menu Grid */}
       <section id="menu" className="py-24 bg-cocoa relative overflow-hidden">
-        {/* Subtle food-image grid behind the menu (visible but kept readable) */}
-        <div aria-hidden className="absolute inset-0 z-0 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 opacity-[0.22] pointer-events-none select-none">
+        {/* Dark food-image grid behind the menu (visible on both sides, subtle behind text) */}
+        <div aria-hidden className="absolute inset-0 z-0 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 opacity-[0.32] pointer-events-none select-none">
           {MENU_BG_IMAGES.map((src, i) => (
             <img
               key={i}
@@ -326,8 +333,9 @@ export default function Home() {
             />
           ))}
         </div>
-        {/* Overlay to guarantee foreground contrast over the imagery */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-cocoa/75 via-cocoa/55 to-cocoa/80" />
+        {/* Radial overlay: darkest in the centre (text), lighter at the edges so
+            the imagery reads on both the left and right sides */}
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(120%_85%_at_50%_50%,rgba(32,22,15,0.93)_38%,rgba(32,22,15,0.5)_100%)]" />
         <div className="absolute inset-0 z-0 bg-jali opacity-30" />
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] ember rounded-full blur-[120px] pointer-events-none z-0" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -468,10 +476,10 @@ export default function Home() {
       {/* Footer / Info */}
       <footer id="godziny" className="bg-[#0a0a0b] pt-24 pb-40 border-t border-white/10 text-gray-300 relative overflow-hidden">
          <div className="absolute inset-0 bg-jali opacity-10" />
-         {/* Giant brand watermark */}
+         {/* Giant brand watermark — fades out toward the top-right via a mask gradient */}
          <span
            aria-hidden
-           className="pointer-events-none select-none absolute -bottom-6 md:-bottom-10 left-1/2 -translate-x-1/2 z-0 font-heading font-black tracking-tight text-white/[0.035] leading-none whitespace-nowrap text-[6rem] sm:text-[10rem] lg:text-[16rem]"
+           className="pointer-events-none select-none absolute -bottom-6 md:-bottom-10 left-1/2 -translate-x-1/2 z-0 font-heading font-black tracking-tight text-white/[0.05] leading-none whitespace-nowrap text-[6rem] sm:text-[10rem] lg:text-[16rem] [mask-image:linear-gradient(to_top_right,white_35%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_top_right,white_35%,transparent_80%)]"
          >
            JOTILABS
          </span>
