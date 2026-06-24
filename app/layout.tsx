@@ -1,6 +1,11 @@
 import type {Metadata} from 'next';
 import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
+import { LanguageProvider } from '../components/LanguageProvider';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
+import VoiceWidget from '../components/VoiceWidget';
+import ChatWidget from '../components/ChatWidget';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 const fraunces = Fraunces({
@@ -19,8 +24,14 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="pl" className={inter.variable + ' ' + fraunces.variable}>
-      <body className="font-sans antialiased text-cream bg-charcoal" suppressHydrationWarning>
-        {children}
+      <body className="font-sans antialiased text-cream bg-charcoal selection:bg-saffron selection:text-charcoal" suppressHydrationWarning>
+        <LanguageProvider>
+          <Nav />
+          <main className="min-h-screen overflow-hidden">{children}</main>
+          <Footer />
+          <VoiceWidget />
+          <ChatWidget />
+        </LanguageProvider>
       </body>
     </html>
   );
