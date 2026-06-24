@@ -1,11 +1,23 @@
 import type { Lang } from './translations';
 import { IMAGES } from './images';
 
-export type MenuItem = { name: string; desc?: string; price: string };
+export type MenuItem = { name: string; desc?: string; price: string; img?: string };
 export type MenuSection = { title: string; img: string; items: MenuItem[] };
+export type Featured = { name: string; desc: string; price: string; rating: string; img: string };
 
 export const isVeg = (desc?: string) =>
   !!desc && /wega|wege|vegan|vegetarian|roślin/i.test(desc);
+
+// "Today's Special" — Figma-style featured cards.
+export function getFeatured(lang: Lang): Featured[] {
+  const pl = lang === 'pl';
+  return [
+    { name: 'Kacchi Biryani', desc: pl ? 'bangladeska biryani z jagnięciną' : 'Bangladeshi lamb biryani', price: '46 zł', rating: '4.9', img: IMAGES.featured.biryani },
+    { name: 'Butter Chicken', desc: pl ? 'kremowe, maślane curry' : 'creamy, buttery curry', price: '44 zł', rating: '4.8', img: IMAGES.featured.butter },
+    { name: 'Adana Kebab', desc: pl ? 'grillowana mielona jagnięcina' : 'grilled minced lamb', price: '34 zł', rating: '4.9', img: IMAGES.featured.adana },
+    { name: 'Półmisek mix grill', desc: pl ? 'mieszany grill dla dwojga' : 'mixed grill for two', price: '55 zł', rating: '5.0', img: IMAGES.featured.mixgrill },
+  ];
+}
 
 export function getMenuSections(lang: Lang): MenuSection[] {
   const pl = lang === 'pl';
