@@ -51,6 +51,15 @@ export const IMAGES = {
     desserts: 'https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?auto=format&fit=crop&w=400&q=60',
   },
 
+  // Wide category banners for the cinematic alternating "dining zone" rows
+  categoryBanners: {
+    kebabs: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=1400&q=60',
+    indian: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1400&q=60',
+    starters: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1400&q=60',
+    breads: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1400&q=60',
+    desserts: 'https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?auto=format&fit=crop&w=1400&q=60',
+  },
+
   // Dark food imagery tiled subtly behind the menu (8 = both sides covered)
   menuBg: [
     'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=50',

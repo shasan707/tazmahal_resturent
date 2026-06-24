@@ -2,7 +2,7 @@ import type { Lang } from './translations';
 import { IMAGES } from './images';
 
 export type MenuItem = { name: string; desc?: string; price: string; img?: string };
-export type MenuSection = { title: string; img: string; items: MenuItem[] };
+export type MenuSection = { title: string; img: string; banner: string; tagline: string; items: MenuItem[] };
 export type Featured = { name: string; desc: string; price: string; rating: string; img: string };
 
 export const isVeg = (desc?: string) =>
@@ -25,6 +25,8 @@ export function getMenuSections(lang: Lang): MenuSection[] {
     {
       title: pl ? 'Kebaby' : 'Kebabs',
       img: IMAGES.categories.kebabs,
+      banner: IMAGES.categoryBanners.kebabs,
+      tagline: pl ? 'Soczyste mięso prosto z grilla' : 'Juicy meat straight off the grill',
       items: [
         { name: 'Kebab w picie', price: '22 zł' },
         { name: 'Kebab w tortilli (durum)', price: '25 zł' },
@@ -40,6 +42,8 @@ export function getMenuSections(lang: Lang): MenuSection[] {
     {
       title: pl ? 'Dania Indyjskie' : 'Indian Dishes',
       img: IMAGES.categories.indian,
+      banner: IMAGES.categoryBanners.indian,
+      tagline: pl ? 'Aromatyczne curry i biryani' : 'Aromatic curries and biryani',
       items: [
         { name: 'Kurczak Tikka Masala', price: '42 zł' },
         { name: 'Butter Chicken', price: '44 zł' },
@@ -55,6 +59,8 @@ export function getMenuSections(lang: Lang): MenuSection[] {
     {
       title: pl ? 'Przystawki' : 'Starters',
       img: IMAGES.categories.starters,
+      banner: IMAGES.categoryBanners.starters,
+      tagline: pl ? 'Idealne na początek' : 'The perfect way to start',
       items: [
         { name: 'Samosa warzywna (2 szt.)', price: '18 zł' },
         { name: 'Onion Bhaji', desc: pl ? 'placki cebulowe' : 'onion fritters', price: '16 zł' },
@@ -66,6 +72,8 @@ export function getMenuSections(lang: Lang): MenuSection[] {
     {
       title: pl ? 'Pieczywo i Dodatki' : 'Breads & Sides',
       img: IMAGES.categories.breads,
+      banner: IMAGES.categoryBanners.breads,
+      tagline: pl ? 'Świeże pieczywo z pieca tandoor' : 'Fresh tandoor breads & sides',
       items: [
         { name: 'Naan', price: '8 zł' },
         { name: 'Naan czosnkowy', price: '11 zł' },
@@ -79,6 +87,8 @@ export function getMenuSections(lang: Lang): MenuSection[] {
     {
       title: pl ? 'Desery i Napoje' : 'Desserts & Drinks',
       img: IMAGES.categories.desserts,
+      banner: IMAGES.categoryBanners.desserts,
+      tagline: pl ? 'Słodkie zakończenie' : 'A sweet finish',
       items: [
         { name: 'Baklava (2 szt.)', price: '18 zł' },
         { name: 'Gulab Jamun', price: '16 zł' },
