@@ -58,7 +58,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm relative z-10">
+      {/* Copyright + socials sit ABOVE the divider line */}
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm relative z-10 mb-8">
         <p className="text-gray-400 text-center md:text-left">
           {t.rights}{' '}
           <a
@@ -85,6 +86,11 @@ export default function Footer() {
             </a>
           ))}
         </div>
+      </div>
+
+      {/* Divider line, now beneath the copyright + socials */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="border-t border-white/10" />
       </div>
     </footer>
   );
