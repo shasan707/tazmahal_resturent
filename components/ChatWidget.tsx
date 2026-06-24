@@ -144,7 +144,7 @@ export default function ChatWidget() {
             type="button"
             onClick={() => setIsOpen(true)}
             aria-label="Otwórz czat"
-            className="w-14 h-14 bg-amber-600 hover:bg-amber-700 rounded-full shadow-xl flex items-center justify-center text-white transition-transform hover:scale-105"
+            className="w-14 h-14 bg-gradient-to-br from-amber-400 via-orange-500 to-amber-500 animate-vibrant rounded-full flex items-center justify-center text-white transition-transform hover:scale-105"
           >
             <MessageSquare className="w-6 h-6" />
           </button>

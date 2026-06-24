@@ -80,7 +80,7 @@ Przyjmuj rezerwację na czacie zadając pytania (maks. 1-2 braki na raz). Po zeb
 ### Godziny & Lokalizacja
 - Poniedziałek-Czwartek: 11:00-24:00, Piątek-Sobota: 11:00-03:00, Niedziela: 12:00-24:00
 - Adres: ul. Piękna 24, 00-549 Warszawa
-- Telefon: +48 22 100 20 30
+- Telefon: +1 (866) 930-7859
 
 ### Promocje
 - 10 procent zniżki na pierwsze zamówienie online.

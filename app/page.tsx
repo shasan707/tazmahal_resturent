@@ -505,8 +505,8 @@ export default function Home() {
                  <li>00-549 Warszawa</li>
                  <li>Polska</li>
                  <li className="pt-2">
-                   <a href="tel:+48221002030" className="flex items-center hover:text-saffron transition-colors">
-                     <Phone className="w-3 h-3 mr-1.5" /> +48 22 100 20 30
+                   <a href="tel:+18669307859" className="flex items-center hover:text-saffron transition-colors">
+                     <Phone className="w-3 h-3 mr-1.5" /> +1 (866) 930-7859
                    </a>
                  </li>
                </ul>
@@ -531,9 +531,9 @@ export default function Home() {
                href="https://jotillabs.com"
                target="_blank"
                rel="noopener noreferrer"
-               className="text-saffron font-medium hover:text-saffron-soft underline underline-offset-4 transition-colors"
+               className="text-saffron font-medium hover:text-saffron-soft no-underline transition-colors"
              >
-               jotilabs
+               JotilLab
              </a>
            </p>
            <div className="flex items-center gap-3">

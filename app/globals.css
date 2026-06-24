@@ -52,6 +52,21 @@
 .animate-float { animation: float 3.2s ease-in-out infinite; }
 .animate-float-slow { animation: float 4s ease-in-out infinite; }
 
+/* Vibrant glowing gradient for the chat + voice action buttons */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 12px 2px rgba(244, 168, 29, 0.55), 0 0 26px 6px rgba(214, 69, 27, 0.35); }
+  50% { box-shadow: 0 0 22px 6px rgba(247, 194, 88, 0.85), 0 0 46px 14px rgba(214, 69, 27, 0.55); }
+}
+.animate-vibrant {
+  background-size: 220% 220%;
+  animation: gradient-shift 4s ease infinite, glow-pulse 2.6s ease-in-out infinite;
+}
+
 /* Honour user motion preferences across the whole page */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
